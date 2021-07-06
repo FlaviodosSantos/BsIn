@@ -24,9 +24,4 @@ Clone o projeto (se for membro) ou Fork o projeto (git clone);
 
 > Aguarde a revisão do pull request (PR). Caso precise de ajustes basta fazer novos commits no branch. O PR será automaticamente atualizado;
 
-## Passo 6
-Quando o PR  for aprovado alguém (gerente ou líder) fará o merge do PR:
- 
-> git checkout main 
 
-> git merge feat/issueXX
