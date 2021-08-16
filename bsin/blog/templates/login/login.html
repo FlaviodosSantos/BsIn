@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>BsIn</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Bem Vindo ao BsIn !!</h1>
+  <p>Faça seu login ou cadastra-se e tenha todas as informações e dicas do BSI-Ceres.</p> 
+</div>
+  
+<div class= "container align-self-center d-flex justify-content-center">
+    <div class = "card" style = "width:400px">
+        <div class = "card-body">
+            {% if form_login.errors %}
+                <p style="color: red">Your username and password didn't match. Please try again.</p>
+            {% endif %}
+            <form method = "POST">
+                {%csrf_token%}
+                <h2>BsIn</h2>
+                <div class = "form-group">
+                    {% for error in form_login.username.errors %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                    <label>{{ form_login.username.label_tag }}</label>
+                    {{ form_login.username }}
+                    {% if form_login.username.help_text %}
+                        <p><small style="color: grey">{{ form_login.username.help_text }}</small></p>
+                    {% endif %}
+                </div>
+
+                <div class = "form-group">
+                   {% for error in form_login.password.errors %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                    <label>{{ form_login.password.label_tag }}</label>
+                    {{ form_login.password }}
+                    {% if form_login.password.help_text %}
+                        <p><small style="color: grey">{{ form_login.password.help_text }}</small></p>
+                    {% endif %}
+                </div>
+
+                <div class = "container align-self-center d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark">Entrar</button>
+                </div>
+
+                <div class = "container align-self-center d-flex justify-content-center">
+                    <a class="nav-link" href=" {% url 'cadastrar_user' %}">Cadastre-se</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
