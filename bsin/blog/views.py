@@ -69,7 +69,7 @@ def cadastrar_user(request):
             try:
                 criar_usuario(request, form_usuario)
                 messages.success(request, 'Usuário cadastrado com sucesso.')
-                return redirect('login/login.html')
+                return redirect('login_user')
             except ValidationError as e:
                 form_usuario.add_error(None, e)
         else:
@@ -118,7 +118,8 @@ def deslogar_usuario(request):
 
 
 def index(request):
-    return render(request, 'templates/index.html')
+    return render(request, 'index.html')
+
 
 
 class PostSearch(generic.ListView):
@@ -133,3 +134,4 @@ class PostSearch(generic.ListView):
         return object_list
 
     
+
